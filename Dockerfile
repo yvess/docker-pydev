@@ -1,9 +1,8 @@
 FROM phusion/baseimage
 MAINTAINER Yves Serrano <y@yas.ch>
 
-RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
-
-RUN apt-get update && apt-get install -yq \
+RUN curl -sL https://deb.nodesource.com/setup | sudo bash - && \
+    apt-get update && apt-get install -yq \
         nodejs \
         git \
         mercurial \
@@ -23,7 +22,9 @@ RUN apt-get update && apt-get install -yq \
         python-httplib2 \
         dnsutils \
         links \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN curl -SL 'https://bootstrap.pypa.io/get-pip.py' | python2 \
+        libncurses5-dev \
+        libjpeg-dev \
+        liblcms2-dev \
+    && rm -rf /var/lib/apt/lists/* && \
+    curl -SL 'https://bootstrap.pypa.io/get-pip.py' | python2 \
     && pip install virtualenv
