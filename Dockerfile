@@ -26,5 +26,6 @@ RUN curl -sL https://deb.nodesource.com/setup | sudo bash - && \
         libjpeg-dev \
         liblcms2-dev \
     && rm -rf /var/lib/apt/lists/* && \
-    curl -SL 'https://bootstrap.pypa.io/get-pip.py' | python2 \
-    && pip install virtualenv
+    curl -SL 'https://bootstrap.pypa.io/get-pip.py' | python2 && \
+    pip install virtualenv && virtualenv /var/py27
+COPY root/_bashrc /root/.bashrc
